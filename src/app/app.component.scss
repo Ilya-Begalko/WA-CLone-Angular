@@ -28,61 +28,10 @@
     border-radius: 3px;
     overflow: hidden;
 
-    #sidebar {
-        display: flex;
+    app-sidebar{
         flex-basis: 30%;
-        flex-direction: column;
-
-        border-right: 1px solid #e1e4e5;
-    
-        #sidebarHeader{
-            flex-basis: 67px;
-            background-color: #eee;
-        }
-
-        #sidebarSearchBox{
-            flex-basis: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background-color: #fbfbfb;
-            border-bottom: 1px solid #e1e4e5;
-
-            img{
-                position: absolute;
-                left: 2.5%;
-            }
-
-            input{
-                width: calc(90% - 50px);
-                height: 70%;
-                border: 1px solid #f7f7f7;
-                border-radius: 7px;
-
-                padding-left: 50px;
-
-                color: #9a9a9a;
-                outline: none;
-
-                &::placeholder{
-                    color: #9a9a9a;
-                    font-weight: 100;
-                }
-
-            };
-        }
-
-        #noConversation{
-            padding-top: 30px;
-            text-align: center;
-
-            color: #b9b9b9;
-            font-size: 20px;
-            font-weight: 100;
-            font-family: sans-serif;
-        }
+        display: block;
+        height: 100%;
     }
-
   
 }

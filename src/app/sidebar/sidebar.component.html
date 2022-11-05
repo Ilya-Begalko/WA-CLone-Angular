@@ -14,12 +14,12 @@
         </div>
         <div id="sidebarSearchBox">
             <img width="19" src="../assets/searchIcon.svg" alt="SearchIcon">
-            <input type="text" placeholder="Search or start the new chat" />
+            <input type="text" [(ngModel)]="searchText" placeholder="Search or start the new chat" />
         </div>
     </div>
 
     <div id="sidebarContent">
-        <div class="conversation" *ngFor="let conversation of conversations"
+        <div class="conversation" *ngFor="let conversation of !searchText ? conversations : filteredConversations"
             (click)="conversationClicked.emit(conversation)">
             <div class="picture">
                 <img src="../../assets/noPic.svg" alt="Contact Avatar">

@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ChatComponent } from './chat/chat.component';
 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    SidebarComponent,
-    ChatComponent
-  ],
+  declarations: [AppComponent, SidebarComponent, ChatComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule,
+    PickerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -19,7 +19,8 @@
     </div>
 
     <div id="sidebarContent">
-        <div class="conversation" *ngFor="let conversation of conversations">
+        <div class="conversation" *ngFor="let conversation of conversations"
+            (click)="conversationClicked.emit(conversation)">
             <div class="picture">
                 <img src="../../assets/noPic.svg" alt="Contact Avatar">
             </div>
@@ -31,7 +32,8 @@
                 <div class="message">
                     <img *ngIf="!conversation.latestMessageRead" src="../../assets/doubleTick.svg">
                     <img *ngIf="conversation.latestMessageRead" src="../../assets/doubleTickBlue.svg">
-                    {{conversation.latestMessage}}</div>
+                    {{conversation.latestMessage}}
+                </div>
             </div>
         </div>
         <!-- <div id="noConversation">

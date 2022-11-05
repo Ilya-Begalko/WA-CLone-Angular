@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'whathsapp-clone';
+  conversation: any;
+
+  onConversationSelected(conversation: any) {
+    this.conversation = conversation;
+  }
 }

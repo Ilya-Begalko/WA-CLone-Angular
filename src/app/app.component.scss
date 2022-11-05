@@ -28,10 +28,42 @@
     border-radius: 3px;
     overflow: hidden;
 
-    app-sidebar{
+    app-sidebar {
         flex-basis: 30%;
         display: block;
         height: 100%;
     }
-  
+
+    #chat {
+        flex-grow: 1;
+
+        background-color: #f7f9fa;
+
+        #chatPlaceholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            height: 100%;
+
+            h2 {
+                font-size: 35px;
+                font-weight: normal;
+                color: #555555;
+            }
+
+            .seperator {
+                width: 50%;
+                
+                border-top: 1px solid #eaeaea;
+                margin: 30px 0px;
+            }
+
+            p {
+                text-align: center;
+            }
+        }
+    }
+
 }

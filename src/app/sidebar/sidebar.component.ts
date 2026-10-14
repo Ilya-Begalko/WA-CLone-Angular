@@ -1,11 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sidebar',
+  imports: [FormsModule],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   @Output() conversationClicked: EventEmitter<any> = new EventEmitter();
 
   searchText!: string;
@@ -181,8 +184,6 @@ export class SidebarComponent implements OnInit {
     },
   ];
 
-  constructor() {}
-
   get filteredConversations() {
     return this.conversations.filter((conversation) => {
       return (
@@ -195,6 +196,4 @@ export class SidebarComponent implements OnInit {
       );
     });
   }
-
-  ngOnInit(): void {}
 }

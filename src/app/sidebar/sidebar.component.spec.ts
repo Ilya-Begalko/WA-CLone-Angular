@@ -8,9 +8,8 @@ describe('SidebarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
-    })
-    .compileComponents();
+      imports: [SidebarComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SidebarComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,13 @@ describe('SidebarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should filter conversations by name and latest message', () => {
+    component.searchText = 'shrek';
+    expect(component.filteredConversations.map((c) => c.name)).toEqual(['SHREK']);
+
+    component.searchText = 'morning';
+    expect(component.filteredConversations.map((c) => c.name)).toEqual(['Kong', 'Rock']);
   });
 });

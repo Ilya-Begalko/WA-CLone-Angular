@@ -1,37 +1,46 @@
 <div id="container">
     <div id="header">
         <div class="avatarSection">
+            <button class="backButton" type="button" aria-label="Back to chats" (click)="back.emit()">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+                </svg>
+            </button>
             <div class="picture">
-                <img src="../../assets/noPic.svg" />
+                <img src="assets/noPic.svg" />
             </div>
 
             <div class="nameSection">{{conversation.name}}</div>
         </div>
         <div class="actionButtons">
-            <img src="../../assets/attached.svg" />
-            <img src="../../assets/moreVertIcon.svg" />
+            <img src="assets/attached.svg" />
+            <img src="assets/moreVertIcon.svg" />
         </div>
     </div>
     <div id="body">
-        <div class="message" [ngClass]="{ me: message.me }" *ngFor="let message of conversation.messages">
-            <div class="messageContent">
-                {{ message.body }}
-                <div class="time">{{ message.time }}</div>
+        @for (message of conversation.messages; track $index) {
+            <div class="message" [ngClass]="{ me: message.me }">
+                <div class="messageContent">
+                    {{ message.body }}
+                    <div class="time">{{ message.time }}</div>
+                </div>
             </div>
-        </div>
+        }
     </div>
     <div id="footer">
         <div id="smileyIcon">
-            <img src="../../assets/smileIcon.svg" (click)="emojiPickerVisible = !emojiPickerVisible" />
-            <emoji-mart (emojiClick)="emojiClicked($event)" *ngIf="emojiPickerVisible"
-                style="position: absolute; bottom: 50px" [darkMode]="false" title="Pick your emoji…" emoji="point_up">
-            </emoji-mart>
+            <img src="assets/smileIcon.svg" (click)="emojiPickerVisible = !emojiPickerVisible" />
+            @if (emojiPickerVisible) {
+                <emoji-mart (emojiClick)="emojiClicked($event)"
+                    [darkMode]="false" title="Pick your emoji…" emoji="point_up">
+                </emoji-mart>
+            }
         </div>
         <div id="textarea">
             <textarea [(ngModel)]="message" (keyup.enter)="submitMessage($event)"></textarea>
         </div>
         <div id="micIcon">
-            <img src="../../assets/voiceIcon.svg" />
+            <img src="assets/voiceIcon.svg" />
         </div>
     </div>
 </div>

@@ -1,27 +1,67 @@
-# WhathsappClone
+# WhatsApp Clone (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+A WhatsApp Web–style chat UI built with Angular. It runs entirely in the browser with mock data — there is no backend.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Conversation list with search by contact name or latest message
+- Chat view with incoming/outgoing message bubbles
+- Sending messages with <kbd>Enter</kbd>
+- Emoji picker powered by [`@ctrl/ngx-emoji-mart`](https://github.com/scttcper/ngx-emoji-mart)
+- Responsive layout:
+  - **> 1440px** — centered window, WhatsApp Web style
+  - **≤ 1440px** — wider window
+  - **≤ 1024px** — full-screen layout
+  - **≤ 768px** — mobile mode: either the conversation list or the open chat is shown, with a back button in the chat header
 
-## Code scaffolding
+## Tech stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Angular](https://angular.dev) 22 — standalone components, built-in control flow, zoneless change detection
+- `@angular/build` (esbuild + Vite) for builds and the dev server
+- [Vitest](https://vitest.dev) with jsdom for unit tests
+- SCSS
 
-## Build
+## Getting started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Requirements: Node.js `^22.22.3`, `^24.15.0` or `>=26` (see [`.nvmrc`](.nvmrc)).
 
-## Running unit tests
+```bash
+npm install
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open [http://localhost:4200](http://localhost:4200). The app reloads automatically when source files change.
 
-## Running end-to-end tests
+## Scripts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Command         | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `npm start`     | Start the dev server                                     |
+| `npm run build` | Production build into `dist/whathsapp-clone/browser`     |
+| `npm run watch` | Development build in watch mode                          |
+| `npm test`      | Run unit tests with Vitest (`npm test -- --watch=false` for a single run) |
 
-## Further help
+## Project structure
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+src/
+├── main.ts                  # Application bootstrap
+├── styles.scss              # Global styles + emoji picker styles
+├── assets/                  # Icons and images
+└── app/
+    ├── app.component.*      # Layout: sidebar + chat area
+    ├── sidebar/             # Conversation list and search
+    └── chat/                # Messages, input and emoji picker
+public/                      # Static files copied as-is (favicon)
+```
+
+## Deploying to Netlify
+
+The repository includes a [`netlify.toml`](netlify.toml), so no manual configuration is needed — just connect the repository in Netlify. It sets:
+
+- build command: `npm run build`
+- publish directory: `dist/whathsapp-clone/browser`
+- Node.js version: 24
+- an SPA fallback redirecting all routes to `index.html`
+
+Settings in `netlify.toml` take precedence over the ones entered in the Netlify UI.
